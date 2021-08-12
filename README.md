@@ -1,2 +1,6 @@
-# EAF Image Viewer
-This repository provides the EAF Image Viewer application for the [Emacs Application Framework](https://github.com/emacs-eaf/emacs-application-framework).
+### EAF Image Viewer
+<p align="center">
+  <img width="800" src="./screenshot.png">
+</p>
+
+Image Viewer application for the [Emacs Application Framework](https://github.com/emacs-eaf/emacs-application-framework).
