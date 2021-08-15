@@ -52,51 +52,51 @@
              },
          });
 
-         function rotate_left() {
+         function rotateLeft() {
              viewer.rotate(-90);
          }
 
-         function rotate_right() {
+         function rotateRight() {
              viewer.rotate(90);
          }
 
-         function zoom_out() {
+         function zoomOut() {
              viewer.zoom(-0.1, true);
          }
 
-         function zoom_in() {
+         function zoomIn() {
              viewer.zoom(0.1, true);
          }
 
-         function zoom_reset() {
+         function zoomReset() {
              viewer.reset();
          }
 
-         function zoom_toggle() {
+         function zoomToggle() {
              viewer.toggle();
          }
 
-         function flip_horizontal() {
+         function flipHorizontal() {
              viewer.scaleX(-viewer.imageData.scaleX || -1);
          }
 
-         function flip_vertical() {
+         function flipVertical() {
              viewer.scaleY(-viewer.imageData.scaleY || -1);
          }
 
-         function move_left() {
+         function moveLeft() {
              viewer.move(-10, 0);
          }
 
-         function move_right() {
+         function moveRight() {
              viewer.move(10, 0);
          }
 
-         function move_up() {
+         function moveUp() {
              viewer.move(0, -10);
          }
 
-         function move_down() {
+         function moveDown() {
              viewer.move(0, 10);
          }
         </script>

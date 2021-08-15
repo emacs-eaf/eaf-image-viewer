@@ -87,54 +87,6 @@ class AppBuffer(BrowserBuffer):
             self.change_title(self.image_name)
 
     @interactive
-    def rotate_left(self):
-        self.buffer_widget.eval_js("rotate_left();")
-
-    @interactive
-    def rotate_right(self):
-        self.buffer_widget.eval_js("rotate_right();")
-
-    @interactive
-    def zoom_out(self):
-        self.buffer_widget.eval_js("zoom_out();")
-
-    @interactive
-    def zoom_in(self):
-        self.buffer_widget.eval_js("zoom_in();")
-
-    @interactive
-    def zoom_reset(self):
-        self.buffer_widget.eval_js("zoom_reset();")
-
-    @interactive
-    def zoom_toggle(self):
-        self.buffer_widget.eval_js("zoom_toggle();")
-
-    @interactive
-    def flip_horizontal(self):
-        self.buffer_widget.eval_js("flip_horizontal();")
-
-    @interactive
-    def flip_vertical(self):
-        self.buffer_widget.eval_js("flip_vertical();")
-
-    @interactive
-    def move_up(self):
-        self.buffer_widget.eval_js("move_up();")
-
-    @interactive
-    def move_down(self):
-        self.buffer_widget.eval_js("move_down();")
-
-    @interactive
-    def move_left(self):
-        self.buffer_widget.eval_js("move_left();")
-
-    @interactive
-    def move_right(self):
-        self.buffer_widget.eval_js("move_right();")
-
-    @interactive
     def delete_current_image(self):
         self.send_input_message("Are you sure you want to delete {0}?".format(self.image_name), "delete_image",  "yes-or-no")
 
