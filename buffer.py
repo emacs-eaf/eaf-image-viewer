@@ -22,7 +22,7 @@
 from PyQt5.QtCore import QUrl
 from PyQt5.QtGui import QColor
 from core.webengine import BrowserBuffer
-from core.utils import interactive, message_to_emacs
+from core.utils import interactive, message_to_emacs, get_emacs_var
 from pathlib import Path
 import os
 
@@ -35,12 +35,8 @@ class AppBuffer(BrowserBuffer):
         self.parent_dir = os.path.abspath(os.path.join(url, os.pardir))
         self.image_name = os.path.basename(url)
 
-        # Set background color.
-        self.background_color_str = "#7F7F7F"
-        self.buffer_widget.web_page.setBackgroundColor(QColor(self.background_color_str))
-
         with open(self.index_file, "r") as f:
-            html = f.read().replace("%1", os.path.join(os.path.dirname(__file__))).replace("%2", os.path.join("file://", url)).replace("%3", self.background_color_str)
+            html = f.read().replace("%1", os.path.join(os.path.dirname(__file__))).replace("%2", os.path.join("file://", url)).replace("%3", get_emacs_var("eaf-emacs-theme-background-color"))
             self.buffer_widget.setHtml(html, QUrl("file://"))
 
     def load_image(self, url):
