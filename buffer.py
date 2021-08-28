@@ -54,7 +54,9 @@ class AppBuffer(BrowserBuffer):
 
     def get_same_dir_images(self):
         files = [f for f in os.listdir(self.parent_dir) if os.path.isfile(os.path.join(self.parent_dir, f))]
-        return list(filter(self.is_image_file, files))
+        images = list(filter(self.is_image_file, files))
+        images.sort()
+        return images
 
     def load_next_image(self):
         images = self.get_same_dir_images()
