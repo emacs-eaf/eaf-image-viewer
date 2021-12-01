@@ -25,6 +25,7 @@ from core.webengine import BrowserBuffer
 from core.utils import interactive, message_to_emacs
 from pathlib import Path
 import os
+import random
 
 class AppBuffer(BrowserBuffer):
     def __init__(self, buffer_id, url, arguments):
@@ -44,8 +45,9 @@ class AppBuffer(BrowserBuffer):
         self.parent_dir = os.path.abspath(os.path.join(url, os.pardir))
         self.image_name = os.path.basename(url)
 
-        load_image_js = "document.getElementById('image').setAttribute('src', '{0}');viewer.update();".format(
-            os.path.join("file://", self.url).replace("\\", "/"))
+        load_image_js = "document.getElementById('image').setAttribute('src', '{0}?{1}');viewer.update();".format(
+            os.path.join("file://", self.url).replace("\\", "/"),
+            random.randint(1, 100000))
 
         self.buffer_widget.eval_js(load_image_js)
 
@@ -57,6 +59,9 @@ class AppBuffer(BrowserBuffer):
         images = list(filter(self.is_image_file, files))
         images.sort()
         return images
+
+    def reload_image(self):
+        self.load_image(os.path.join(self.parent_dir, self.image_name))
 
     def load_next_image(self):
         images = self.get_same_dir_images()

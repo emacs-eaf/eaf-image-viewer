@@ -88,6 +88,7 @@
   '(("n" . "load_next_image")
     ("p" . "load_prev_image")
     ("SPC" . "load_prev_image")
+    ("r" . "reload_image")
 
     ("," . "js_zoom_out")
     ("." . "js_zoom_in")
