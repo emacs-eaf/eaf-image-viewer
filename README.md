@@ -21,6 +21,7 @@ Image Viewer application for the [Emacs Application Framework](https://github.co
 | `n` | load_next_image |
 | `p` | load_prev_image |
 | `SPC` | load_prev_image |
+| `r` | reload_image |
 | `,` | zoom_out |
 | `.` | zoom_in |
 | `/` | zoom_reset |
@@ -39,4 +40,3 @@ Image Viewer application for the [Emacs Application Framework](https://github.co
 | `l` | move_right |
 | `d` | delete_current_image |
 | `<f12>` | open_devtools |
-
