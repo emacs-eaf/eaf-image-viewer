@@ -107,6 +107,10 @@
     ("l" . "js_move_left")
     ("h" . "js_move_right")
 
+    ("U" . "eaf-image-viewer-rotate-file-left")
+    ("I" . "eaf-image-viewer-rotate-file-right")
+    ("O" . "eaf-image-viewer-rotate-file-horizontal")
+
     ("d" . "delete_current_image")
     ("<f12>" . "open_devtools")
     )
@@ -117,6 +121,39 @@
   '("jpg" "jpeg" "png" "bmp" "gif" "svg" "webp")
   "The extension list of image viewer application."
   :type 'cons)
+
+(defun eaf-image-viewer-rotate-by-convert (file-name degrees-string)
+  "Rotate FILE-NAME with the passed DEGREES-STRING.
+
+Note that the file is changed on the file-system."
+  ;; redisplay to show the \"Rotating...\" message
+  (redisplay)
+  (shell-command
+   (format "convert '%s' -quality 100 -rotate %s '%s'"
+           file-name
+           degrees-string
+           file-name)))
+
+(defun eaf-image-viewer-rotate-file-right ()
+  (interactive)
+  (message "Rotating...")
+  (eaf-call-async "eval_js_function" eaf--buffer-id "rotate_right" "")
+  (eaf-image-viewer-rotate-by-convert (eaf-get-path-or-url) "+90")
+  (message "Rotated right and saved to file system"))
+
+(defun eaf-image-viewer-rotate-file-left ()
+  (interactive)
+  (message "Rotating...")
+  (eaf-call-async "eval_js_function" eaf--buffer-id "rotate_left" "")
+  (eaf-image-viewer-rotate-by-convert (eaf-get-path-or-url) "-90")
+  (message "Rotated left and saved to file system"))
+
+(defun eaf-image-viewer-rotate-file-horizontal ()
+  (interactive)
+  (message "Rotating...")
+  (eaf-call-async "eval_js_function" eaf--buffer-id "rotate_horizontal" "")
+  (eaf-image-viewer-rotate-by-convert (eaf-get-path-or-url) "-180")
+  (message "Rotated horizontal and saved to file system"))
 
 (add-to-list 'eaf-app-binding-alist '("image-viewer" . eaf-image-viewer-keybinding))
 
