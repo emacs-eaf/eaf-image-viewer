@@ -89,6 +89,7 @@
     ("p" . "load_prev_image")
     ("SPC" . "load_prev_image")
     ("r" . "reload_image")
+    ("x" . "insert_or_close_buffer")
 
     ("," . "js_zoom_out")
     ("." . "js_zoom_in")
@@ -97,7 +98,6 @@
     ("=" . "js_zoom_in")
     ("0" . "js_zoom_reset")
     ("9" . "js_zoom_toggle")
-    ("x" . "js_close_buffer")
     ("u" . "js_rotate_left")
     ("i" . "js_rotate_right")
     ("y" . "js_flip_horizontal")
