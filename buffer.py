@@ -22,6 +22,7 @@
 from PyQt6.QtCore import QUrl
 from core.webengine import BrowserBuffer
 from core.utils import interactive, message_to_emacs
+from core.utils import get_emacs_theme_foreground, get_emacs_theme_background, interactive
 from pathlib import Path
 import os
 import random
@@ -38,6 +39,16 @@ class AppBuffer(BrowserBuffer):
         with open(self.index_file, "r") as f:
             html = f.read().replace("%1", os.path.join(os.path.dirname(__file__))).replace("%2", os.path.join("file://", url)).replace("%3", self.theme_background_color)
             self.buffer_widget.setHtml(html, QUrl("file://"))
+
+    @interactive
+    def update_theme(self):
+        self.theme_foreground_color = get_emacs_theme_foreground()
+        self.theme_background_color = get_emacs_theme_background()
+        self.buffer_widget.eval_js("document.body.style.background = '{}'; document.body.style.color = '{}'; document.getElementsByTagName('img')[0].style.background = '{}'; document.getElementsByClassName('viewer-container')[0].style.background = '{}'".format(
+            self.theme_background_color,
+            self.theme_foreground_color,
+            self.theme_background_color,
+            self.theme_background_color))
 
     def load_image(self, url):
         self.url = url
