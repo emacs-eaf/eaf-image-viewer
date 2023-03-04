@@ -42,13 +42,9 @@ class AppBuffer(BrowserBuffer):
 
     @interactive
     def update_theme(self):
-        self.theme_foreground_color = get_emacs_theme_foreground()
-        self.theme_background_color = get_emacs_theme_background()
-        self.buffer_widget.eval_js("document.body.style.background = '{}'; document.body.style.color = '{}'; document.getElementsByTagName('img')[0].style.background = '{}'; document.getElementsByClassName('viewer-container')[0].style.background = '{}'".format(
-            self.theme_background_color,
-            self.theme_foreground_color,
-            self.theme_background_color,
-            self.theme_background_color))
+        super().update_theme()
+
+        self.buffer_widget.eval_js("document.getElementsByTagName('img')[0].style.background = '{}'; document.getElementsByClassName('viewer-container')[0].style.background = '{}'".format(self.theme_background_color, self.theme_background_color))
 
     def load_image(self, url):
         self.url = url
