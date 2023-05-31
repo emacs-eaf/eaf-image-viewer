@@ -21,8 +21,7 @@
 
 from PyQt6.QtCore import QUrl
 from core.webengine import BrowserBuffer
-from core.utils import interactive, message_to_emacs
-from core.utils import get_emacs_theme_foreground, get_emacs_theme_background, interactive
+from core.utils import *
 from pathlib import Path
 import os
 import random
